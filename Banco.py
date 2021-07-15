@@ -73,12 +73,16 @@ def trans():
 def saque():
     saldo_da_conta = saldo()
     valor = float(input('Valor a ser sacado: '))
-    if valor < 750.01:
-        nome_fornecedor = contas.get(login_usuario)
-        saldo_da_conta -= valor   
-        saldo_contas[nome_fornecedor] = saldo_da_conta
-    else: 
-        print('O valor não pode ser maior que R$750.00')
+    if valor > saldo_da_conta:
+        if valor < 750.01:
+            nome_fornecedor = contas.get(login_usuario)
+            saldo_da_conta -= valor   
+            saldo_contas[nome_fornecedor] = saldo_da_conta
+        else: 
+            print('O valor não pode ser maior que R$750.00')
+            saque()
+    else:
+        print('O seu saldo é insuficiente para o saque!')
         saque()
     #só pra bonito tem a flag
     flag = "Operação realizada com sucesso"
