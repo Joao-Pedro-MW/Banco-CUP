@@ -73,7 +73,7 @@ def trans():
 def saque():
     saldo_da_conta = saldo()
     valor = float(input('Valor a ser sacado: '))
-    if valor > saldo_da_conta:
+    if valor < saldo_da_conta:
         if valor < 750.01:
             nome_fornecedor = contas.get(login_usuario)
             saldo_da_conta -= valor   
